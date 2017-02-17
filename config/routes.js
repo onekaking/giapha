@@ -34,7 +34,8 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  'POST /member/:id/addchild': 'MemberController.addChild'
 
   /***************************************************************************
   *                                                                          *
