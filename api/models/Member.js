@@ -13,7 +13,7 @@ module.exports = {
     },
     child: {
       collection: 'Member',
-	  via: 'parent'
+      via: 'parent'
     }
   }
 };
