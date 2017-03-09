@@ -35,8 +35,7 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'POST /graphql': 'GraphQLController.index',
-  'POST /member/:id/addchild': 'MemberController.addChild'
+  'POST /member/:id': 'MemberController.addChild'
 
   /***************************************************************************
   *                                                                          *

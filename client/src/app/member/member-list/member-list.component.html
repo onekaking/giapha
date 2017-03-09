@@ -1,0 +1,5 @@
+<app-member-create *ngIf="members.length == 0"></app-member-create>
+<div class="member" *ngFor="let item in members">
+    {{ item.name }}
+    <app-member-create></app-member-create>
+</div>

@@ -1,36 +1,37 @@
+/* Angular 2 */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+/* ngrx - redux */
+import { StoreModule, Store } from '@ngrx/store';
+
+/* Config env provider */
+import { ENV_PROVIDERS } from '../environments/environment';
+
+/* Reducer */
+import { memberReducer } from './member/member.reducer';
+
+/* Component */
 import { AppComponent } from './app.component';
-import { MemberComponent } from './member/member.component';
+import { MemberModule } from './member/member.module';
 
-import { ApolloClient, createNetworkInterface } from 'apollo-client';
-import { ApolloModule } from 'apollo-angular';
-
-const client = new ApolloClient({
-  networkInterface: createNetworkInterface({
-    uri: 'http://localhost:1337/graphql'
-  })
-});
-
-export function provideClient(): ApolloClient {
-  return client;
-}
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MemberComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    ApolloModule.forRoot(provideClient),
     FormsModule,
-    HttpModule
+    HttpModule,
+    StoreModule.forRoot({
+      member: memberReducer
+    }),
+    MemberModule
   ],
-  providers: [],
+  providers: [ENV_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
