@@ -1,4 +1,10 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+
+/* rxjs */
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/do';
 
 /* ngrx - redux */
 import { Store } from '@ngrx/store';
@@ -18,18 +24,27 @@ import { MemberAction } from '../member.action';
     encapsulation: ViewEncapsulation.None
 })
 
-export class MemberListComponent implements OnInit {
+export class MemberListComponent implements OnInit, OnDestroy {
+    private memberSubscription: Subscription;
     members: Member[] = [];
+
     constructor(
         private memberService: MemberService,
         private store: Store<any>,
-        private memberAction: MemberAction) {}
+        private memberAction: MemberAction) {
+            this.memberSubscription = this.store.select(x => x.member.members).subscribe(data => {
+                this.members = data;
+            });
+        }
 
     ngOnInit() {
         this.memberService.getList()
             .subscribe(res => {
                 this.store.dispatch(this.memberAction.initData(res));
-                console.log(res);
             });
+    }
+
+    ngOnDestroy() {
+        this.memberSubscription.unsubscribe();
     }
 }

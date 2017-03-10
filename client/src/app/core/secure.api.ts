@@ -4,6 +4,7 @@ import { URLSearchParams, Http, Headers, RequestOptions, Response } from '@angul
 
 /* rxjs */
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 export class SecureApi {
     constructor(
@@ -19,6 +20,7 @@ export class SecureApi {
             resource += ('?' + params.toString());
         }
         const url = this.baseUrl + resource;
+        console.log(url);
 
         return this.http.get(url, this.createRequestOptions())
             .map(res => res.json());

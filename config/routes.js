@@ -35,6 +35,7 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
+  'GET /member': 'MemberController.find',
   'POST /member/:id': 'MemberController.addChild'
 
   /***************************************************************************

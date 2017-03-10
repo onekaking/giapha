@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 
 /* ngrx - redux */
 import { StoreModule, Store } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 /* Config env provider */
 import { ENV_PROVIDERS } from '../environments/environment';
@@ -26,9 +27,10 @@ import { MemberModule } from './member/member.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.forRoot({
+    StoreModule.provideStore({
       member: memberReducer
     }),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
     MemberModule
   ],
   providers: [ENV_PROVIDERS],

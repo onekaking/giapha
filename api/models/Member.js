@@ -7,13 +7,23 @@
 
 module.exports = {
   attributes: {
-    name: 'string',
-    parent: {
-      model: 'Member'
+    name: {
+      type: 'string',
+      required: true
     },
-    child: {
-      collection: 'Member',
-      via: 'parent'
+    parent: {
+      type: 'integer'
+    },
+    gender: {
+      type: 'string',
+      enum: ['male', 'female', 'undefined'],
+      defaultsTo: 'undefined'
+    },
+    birthday: {
+      type: 'date'
+    },
+    placeofbirth: {
+      type: 'string'
     }
   }
 };

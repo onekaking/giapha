@@ -12,7 +12,7 @@ import { Member } from './member.model';
 
 @Injectable()
 export class MemberService extends BaseService {
-    private baseUrl: string = 'member';
+    private baseUrl: string = '/member';
     constructor(private secureApi: SecureApi) {
         super(secureApi);
     }

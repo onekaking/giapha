@@ -1,9 +1,13 @@
 /* ngrx - redux */
 import { ActionReducer, Action } from '@ngrx/store';
+
+/* Model */
 import { Member } from './member.model';
+
+/* Action */
 import { MemberAction } from './member.action';
 
-export interface MemberState {
+export class MemberState {
     members: Member[];
 }
 
@@ -15,10 +19,13 @@ export const memberReducer: ActionReducer<any> = (state: MemberState = memberIni
     switch (action.type) {
 
         case MemberAction.initData:
-            return action.payload.list;
+            return Object.assign({}, state , { members: action.payload.list });
 
         case MemberAction.addMember:
-            return [...state.members, action.payload];
+            console.log(state, action);
+            return Object.assign({}, state , {
+                members: [...state.members, action.payload]
+            });
 
         default:
             return state;

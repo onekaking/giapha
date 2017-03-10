@@ -25,13 +25,18 @@ export class MemberCreateComponent {
     constructor(
         private memberService: MemberService,
         private store: Store<any>,
-        private memberAction: MemberAction) {}
+        private memberAction: MemberAction) {
+            this.member = new Member();
+        }
 
     createMember() {
+        if (this.parent != null) {
+            this.member.parent = this.parent.id;
+        }
         this.memberService.addMember(this.member)
             .subscribe(res => {
                 this.store.dispatch(this.memberAction.addMember(res));
-                console.log(res);
             });
+
     }
 }
