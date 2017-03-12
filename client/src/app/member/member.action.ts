@@ -10,7 +10,7 @@ export class MemberAction {
         return {
             type: MemberAction.initData,
             payload: {
-                list: members
+                members
             }
         };
     }
@@ -19,7 +19,16 @@ export class MemberAction {
     addMember(member: Member): Action {
         return {
             type: MemberAction.addMember,
-            payload: member
+            payload: {
+                member
+            }
+        };
+    }
+
+    static setLoading = '[Member] Set Loading';
+    setLoading(): Action {
+        return {
+            type: MemberAction.setLoading
         };
     }
 

@@ -18,6 +18,8 @@ import { memberReducer } from './member/member.reducer';
 import { AppComponent } from './app.component';
 import { MemberModule } from './member/member.module';
 
+/* Router */
+import { AppRoutingModule } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { MemberModule } from './member/member.module';
       member: memberReducer
     }),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    MemberModule
+    MemberModule,
+    AppRoutingModule
   ],
   providers: [ENV_PROVIDERS],
   bootstrap: [AppComponent]
