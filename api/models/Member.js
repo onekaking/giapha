@@ -6,24 +6,27 @@
  */
 
 module.exports = {
-  attributes: {
-    name: {
-      type: 'string',
-      required: true
-    },
-    parent: {
-      type: 'integer'
-    },
-    gender: {
-      type: 'string',
-      enum: ['male', 'female', 'undefined'],
-      defaultsTo: 'undefined'
-    },
-    birthday: {
-      type: 'date'
-    },
-    placeofbirth: {
-      type: 'string'
+    attributes: {
+        name: {
+            type: 'string',
+            required: true
+        },
+        parent: {
+            type: 'integer'
+        },
+        gender: {
+            type: 'string',
+            enum: ['male', 'female', 'undefined'],
+            defaultsTo: 'undefined'
+        },
+        birthday: {
+            type: 'date'
+        },
+        avatarUrl: {
+            type: 'string'
+        },
+        placeofbirth: {
+            type: 'string'
+        }
     }
-  }
 };

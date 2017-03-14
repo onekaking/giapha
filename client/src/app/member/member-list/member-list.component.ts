@@ -32,9 +32,9 @@ export class MemberListComponent implements OnInit, OnDestroy {
         private memberService: MemberService,
         private store: Store<any>,
         private memberAction: MemberAction) {
-            this.memberSubscription = this.store.select(x => x.member).distinctUntilChanged().subscribe(data => {
+            this.memberSubscription = this.store.select(x => x.member.members).distinctUntilChanged().subscribe(data => {
                 console.log('memberSubscription');
-                this.members = data.members;
+                this.members = data;
             });
         }
 
@@ -43,10 +43,6 @@ export class MemberListComponent implements OnInit, OnDestroy {
             .subscribe(res => {
                 this.store.dispatch(this.memberAction.initData(res));
             });
-    }
-
-    onClick() {
-        this.store.dispatch(this.memberAction.setLoading());
     }
 
     ngOnDestroy() {

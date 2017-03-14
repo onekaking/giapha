@@ -33,10 +33,10 @@ export class MemberCreateComponent {
         if (this.parent != null) {
             this.member.parent = this.parent.id;
         }
-        this.memberService.addMember(this.member)
-            .subscribe(res => {
-                this.store.dispatch(this.memberAction.addMember(res));
-            });
-
+        // this.memberService.addMember(this.member)
+        //     .subscribe(res => {
+        //         this.store.dispatch(this.memberAction.addMember(res));
+        //     });
+        this.store.dispatch(this.memberAction.addMember(this.member));
     }
 }

@@ -15,21 +15,36 @@ export class MemberAction {
         };
     }
 
-    static addMember = '[Member] Add Member';
+    static addMember = '[Member] Add';
     addMember(member: Member): Action {
         return {
             type: MemberAction.addMember,
             payload: {
-                member
+                member,
+                isLoading: true
             }
         };
     }
 
-    static setLoading = '[Member] Set Loading';
-    setLoading(): Action {
+    static addMemberSuccses = '[Member] Add success';
+    addMemberSuccess(member: Member): Action {
         return {
-            type: MemberAction.setLoading
+            type: MemberAction.addMemberSuccses,
+            payload: {
+                member,
+                isLoading: false
+            }
         };
     }
 
+    static addMemberFail = '[Member] Add fail';
+    addMemberFail(errorMsg): Action {
+        return {
+            type: MemberAction.addMemberFail,
+            payload: {
+                errorMsg: errorMsg,
+                isLoading: false
+            }
+        }
+    }
 }

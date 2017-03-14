@@ -10,28 +10,38 @@ import { MemberAction } from './member.action';
 export class MemberState {
     members: Member[];
     isLoading: boolean;
+    errorMsg: string;
 }
 
 export const memberInitState = {
     members: [],
-    isLoading: true
+    isLoading: true,
+    errorMsg: null
 };
 
 export const memberReducer: ActionReducer<any> = (state: MemberState = memberInitState, action: Action) => {
     switch (action.type) {
 
         case MemberAction.initData:
-            return Object.assign({}, state , { members: action.payload.members });
-
-        case MemberAction.addMember:
-            console.log(state, action);
-            return Object.assign({}, state , {
-                members: [...state.members, action.payload.member]
+            return Object.assign({}, state, {
+                members: action.payload.members
             });
 
-        case MemberAction.setLoading:
+        case MemberAction.addMember:
             return Object.assign({}, state, {
-                isLoading: true
+                isLoading: action.payload.isLoading
+            });
+
+        case MemberAction.addMemberSuccses:
+            return Object.assign({}, state, {
+                members: [...state.members, action.payload.member],
+                isLoading: action.payload.isLoading
+            });
+
+        case MemberAction.addMemberFail:
+            return Object.assign({}, state, {
+                errorMsg: action.payload.errorMsg,
+                isLoading: action.payload.isLoading
             });
 
         default:
