@@ -6,6 +6,13 @@ import { Member } from './member.model';
 
 export class MemberAction {
     static initData = '[Member] Init Data';
+    static addMember = '[Member] Add';
+    static addMemberSuccses = '[Member] Add success';
+    static addMemberFail = '[Member] Add fail';
+    static redirectToAddMember = '[Member] Redirect to add member page';
+    static redirectToListMember = '[Member] Redirect to list member page';
+    static serviceFail = '[Member] Service Fail';
+
     initData(members: Member[]): Action {
         return {
             type: MemberAction.initData,
@@ -15,7 +22,6 @@ export class MemberAction {
         };
     }
 
-    static addMember = '[Member] Add';
     addMember(member: Member): Action {
         return {
             type: MemberAction.addMember,
@@ -26,7 +32,6 @@ export class MemberAction {
         };
     }
 
-    static addMemberSuccses = '[Member] Add success';
     addMemberSuccess(member: Member): Action {
         return {
             type: MemberAction.addMemberSuccses,
@@ -37,7 +42,6 @@ export class MemberAction {
         };
     }
 
-    static addMemberFail = '[Member] Add fail';
     addMemberFail(errorMsg): Action {
         return {
             type: MemberAction.addMemberFail,
@@ -46,5 +50,32 @@ export class MemberAction {
                 isLoading: false
             }
         }
+    }
+
+    redirectToAddMember(): Action {
+        return {
+            type: MemberAction.redirectToAddMember,
+            payload: {
+                url: 'members/add'
+            }
+        };
+    }
+
+    redirectToListMember(): Action {
+        return {
+            type: MemberAction.redirectToListMember,
+            payload: {
+                url: 'members/list'
+            }
+        };
+    }
+
+    serviceFail(error): Action {
+        return {
+            type: MemberAction.serviceFail,
+            payload: {
+                errorMsg: error
+            }
+        };
     }
 }

@@ -20,7 +20,6 @@ export class SecureApi {
             resource += ('?' + params.toString());
         }
         const url = this.baseUrl + resource;
-        console.log(url);
 
         return this.http.get(url, this.createRequestOptions())
             .map(res => res.json());

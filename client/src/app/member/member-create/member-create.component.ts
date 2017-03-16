@@ -12,6 +12,9 @@ import { Member } from '../member.model';
 /* Reducer */
 import { MemberAction } from '../member.action';
 
+/* primeNg */
+import { SelectItem } from 'primeng/components/common/api';
+
 @Component({
     selector: 'app-member-create',
     templateUrl: 'member-create.component.html',
@@ -20,23 +23,26 @@ import { MemberAction } from '../member.action';
 })
 
 export class MemberCreateComponent {
-    @Input('member') parent: Member;
     member: Member;
+    title: string = 'Create Member Page';
+    genders: SelectItem[];
+
     constructor(
         private memberService: MemberService,
         private store: Store<any>,
         private memberAction: MemberAction) {
             this.member = new Member();
+            this.genders = [];
+            this.genders = [{
+                label: 'Male', value: 'male'
+            }, {
+                label: 'Female', value: 'female'
+            }, {
+                label: 'Other', value: 'undefined'
+            }];
         }
 
     createMember() {
-        if (this.parent != null) {
-            this.member.parent = this.parent.id;
-        }
-        // this.memberService.addMember(this.member)
-        //     .subscribe(res => {
-        //         this.store.dispatch(this.memberAction.addMember(res));
-        //     });
         this.store.dispatch(this.memberAction.addMember(this.member));
     }
 }

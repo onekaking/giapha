@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { EffectsModule } from '@ngrx/effects';
+
+/* Third pary */
+import { MomentModule } from 'angular2-moment';
 
 /* Components */
 import { MemberComponent } from './member.component';
@@ -20,15 +22,16 @@ import { MemberAction } from './member.action';
 /* Router */
 import { membersRoutes } from './member.routing';
 
-/* Effect */
-import { MemberCreateEffect } from './member-create/member-create.effects';
+/* primeNg components/dropdown/dropdown*/
+import { DropdownModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(membersRoutes),
-    EffectsModule.run(MemberCreateEffect)
+    MomentModule,
+    DropdownModule,
+    RouterModule.forChild(membersRoutes)
   ],
   declarations: [
     MemberComponent,

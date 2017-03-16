@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-    find: function(req, res) {
+    findChild: function(req, res) {
         var Promise = require('q');
 
         function loadChild(parent) {

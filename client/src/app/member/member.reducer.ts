@@ -13,7 +13,7 @@ export class MemberState {
     errorMsg: string;
 }
 
-export const memberInitState = {
+const memberInitState = {
     members: [],
     isLoading: true,
     errorMsg: null
@@ -42,6 +42,11 @@ export const memberReducer: ActionReducer<any> = (state: MemberState = memberIni
             return Object.assign({}, state, {
                 errorMsg: action.payload.errorMsg,
                 isLoading: action.payload.isLoading
+            });
+
+        case MemberAction.serviceFail:
+            return Object.assign({}, state, {
+                errorMsg: action.payload.errorMsg
             });
 
         default:

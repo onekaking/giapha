@@ -1,0 +1,42 @@
+html, body, app-root {
+    height: 100%;
+}
+app-root {
+    display: block;
+}
+
+.left-side-panel {
+    background-color: #293541;
+    color: #6c737b;
+    width: 80px;
+    float: left;
+    height: 100%;
+}
+
+.left-side-panel ul {
+    list-style: none;
+    padding: 0;
+}
+
+.left-side-panel ul, .left-side-panel li {
+    margin: 0;
+}
+
+.left-side-panel li {
+    text-align: center;
+    padding: 14px;
+    cursor: pointer;
+}
+
+.left-side-panel li:hover .fa, .left-side-panel li .fa.active {
+    color: #fff;
+}
+
+.left-side-panel li .fa {
+    font-size: 22px;
+}
+
+.right-side-panel {
+    width: calc(100% - 80px);
+    float: left;
+}

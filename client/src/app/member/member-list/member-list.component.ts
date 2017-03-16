@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 
 /* rxjs */
 import { Observable } from 'rxjs/Observable';
@@ -24,26 +24,19 @@ import { MemberAction } from '../member.action';
     encapsulation: ViewEncapsulation.None
 })
 
-export class MemberListComponent implements OnInit, OnDestroy {
+export class MemberListComponent implements OnDestroy {
     private memberSubscription: Subscription;
     members: Member[] = [];
+    title: string = 'List Members Page';
 
     constructor(
         private memberService: MemberService,
         private store: Store<any>,
         private memberAction: MemberAction) {
             this.memberSubscription = this.store.select(x => x.member.members).distinctUntilChanged().subscribe(data => {
-                console.log('memberSubscription');
                 this.members = data;
             });
         }
-
-    ngOnInit() {
-        this.memberService.getList()
-            .subscribe(res => {
-                this.store.dispatch(this.memberAction.initData(res));
-            });
-    }
 
     ngOnDestroy() {
         this.memberSubscription.unsubscribe();

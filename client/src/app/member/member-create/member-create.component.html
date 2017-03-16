@@ -1,3 +1,6 @@
+<div class="page-header">
+  <h1>{{ title }}</h1>
+</div>
 <form ngNoForm>
     <div class="form-group">
         <label for="inputName">Name</label>
@@ -5,7 +8,9 @@
     </div>
     <div class="form-group">
         <label for="inputGender">Gender</label>
-        <input type="checkbox" class="form-control" id="inputGender" aria-label="...">
+        <div>  
+            <p-dropdown [options]="genders" [(ngModel)]="member.gender" placeholder="Select a gender" id="inputGender"></p-dropdown>
+        </div>
     </div>
-    <button type="button" (click)="createMember()" class="btn btn-default">Create</button>
+    <button type="button" (click)="createMember()" class="btn btn-primary btn-block">Create</button>
 </form>
