@@ -21,6 +21,7 @@ import { MemberAction } from '../member.action';
 @Component({
     selector: 'app-member-list',
     templateUrl: 'member-list.component.html',
+    styleUrls: ['member-list.component.css'],
     encapsulation: ViewEncapsulation.None
 })
 
@@ -33,9 +34,11 @@ export class MemberListComponent implements OnDestroy {
         private memberService: MemberService,
         private store: Store<any>,
         private memberAction: MemberAction) {
-            this.memberSubscription = this.store.select(x => x.member.members).distinctUntilChanged().subscribe(data => {
-                this.members = data;
-            });
+            this.memberSubscription = this.store.select(x => x.member.members)
+                .distinctUntilChanged()
+                .subscribe(data => {
+                    this.members = data;
+                });
         }
 
     ngOnDestroy() {

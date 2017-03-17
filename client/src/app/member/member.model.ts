@@ -6,4 +6,5 @@ export class Member {
     gender: string;
     createdAt: Date;
     updatedAt: Date;
+    avatarUrl: string = 'http://localhost:1337/images/defaultavatar.png';
 }

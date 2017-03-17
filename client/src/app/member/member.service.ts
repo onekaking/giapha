@@ -31,4 +31,8 @@ export class MemberService extends BaseService {
         });
     }
 
+    getMemberById(id: number) {
+        return this.get(`${this.baseUrl}\/${id}`);
+    }
+
 }

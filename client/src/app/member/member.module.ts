@@ -11,10 +11,13 @@ import { MomentModule } from 'angular2-moment';
 import { MemberComponent } from './member.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { MemberCreateComponent} from './member-create/member-create.component';
+import { MemberDetailComponent } from './member-detail/member-detail.component';
+import { UploadAvatarComponent } from '../shared/component/upload-avatar/upload-avatar.component';
 
 /* Service */
 import { MemberService } from './member.service';
 import { SecureApi } from '../core/secure.api';
+import { UploadService } from '../shared/upload.service';
 
 /* Action */
 import { MemberAction } from './member.action';
@@ -36,9 +39,11 @@ import { DropdownModule } from 'primeng/primeng';
   declarations: [
     MemberComponent,
     MemberListComponent,
-    MemberCreateComponent
+    MemberCreateComponent,
+    MemberDetailComponent,
+    UploadAvatarComponent
   ],
   exports: [ RouterModule ],
-  providers: [ MemberService, SecureApi, MemberAction ]
+  providers: [ MemberService, UploadService, SecureApi, MemberAction ]
 })
 export class MemberModule { }

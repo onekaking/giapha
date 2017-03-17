@@ -7,6 +7,10 @@
         <input type="text" autofocus="autofocus" [(ngModel)]="member.name" class="form-control" id="inputName" placeholder="Name">
     </div>
     <div class="form-group">
+        <label>Avatar</label>
+        <app-upload-avatar [(defaultImage)]="member.avatarUrl"></app-upload-avatar>
+    </div>
+    <div class="form-group">
         <label for="inputGender">Gender</label>
         <div>  
             <p-dropdown [options]="genders" [(ngModel)]="member.gender" placeholder="Select a gender" id="inputGender"></p-dropdown>

@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+/* Core Api */
+import { BaseService } from '../core/base.service';
+import { SecureApi } from '../core/secure.api';
+
+/* rxjs operator */
+import 'rxjs/Rx';
+
 @Injectable()
 export class UploadService {
     progress: any;
@@ -13,13 +20,13 @@ export class UploadService {
         }).share();
     }
 
-    private makeFileRequest(url: string, params: string[], files: File[]): any {
+    public makeFileRequest(url: string, params: string[], files: File[]): any {
         return Observable.create(observer => {
             const formData: FormData = new FormData(),
                 xhr: XMLHttpRequest = new XMLHttpRequest();
 
             for (let i = 0; i < files.length; i++) {
-                formData.append('uploads[]', files[i], files[i].name);
+                formData.append('avatar', files[i], files[i].name);
             }
 
             xhr.onreadystatechange = () => {

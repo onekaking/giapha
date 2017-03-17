@@ -24,7 +24,7 @@ import { memberReducer } from './member/member.reducer';
 /* Component */
 import { AppComponent } from './app.component';
 import { MemberModule } from './member/member.module';
-import { LeftSideComponent } from './shared/component/left-side.component';
+import { LeftSideComponent } from './shared/component/left-side/left-side.component';
 
 /* Router */
 import { AppRoutingModule } from './app.routing';

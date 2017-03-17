@@ -11,12 +11,14 @@ export class MemberState {
     members: Member[];
     isLoading: boolean;
     errorMsg: string;
+    detailMember: Member;
 }
 
 const memberInitState = {
     members: [],
     isLoading: true,
-    errorMsg: null
+    errorMsg: null,
+    detailMember: new Member()
 };
 
 export const memberReducer: ActionReducer<any> = (state: MemberState = memberInitState, action: Action) => {
@@ -47,6 +49,11 @@ export const memberReducer: ActionReducer<any> = (state: MemberState = memberIni
         case MemberAction.serviceFail:
             return Object.assign({}, state, {
                 errorMsg: action.payload.errorMsg
+            });
+
+        case MemberAction.getMemberSuccess:
+            return Object.assign({}, state, {
+                detailMember: action.payload.member
             });
 
         default:

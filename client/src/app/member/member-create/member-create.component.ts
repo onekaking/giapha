@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 /* Service */
 import { MemberService } from '../member.service';
+import { UploadService } from '../../shared/upload.service';
 
 /* Model */
 import { Member } from '../member.model';
@@ -30,7 +31,8 @@ export class MemberCreateComponent {
     constructor(
         private memberService: MemberService,
         private store: Store<any>,
-        private memberAction: MemberAction) {
+        private memberAction: MemberAction,
+        private uploadService: UploadService) {
             this.member = new Member();
             this.genders = [];
             this.genders = [{

@@ -6,12 +6,14 @@ import { Member } from './member.model';
 
 export class MemberAction {
     static initData = '[Member] Init Data';
-    static addMember = '[Member] Add';
+    static addMember = '[Member] Add member';
     static addMemberSuccses = '[Member] Add success';
     static addMemberFail = '[Member] Add fail';
     static redirectToAddMember = '[Member] Redirect to add member page';
     static redirectToListMember = '[Member] Redirect to list member page';
     static serviceFail = '[Member] Service Fail';
+    static getMember = '[Member] Get member';
+    static getMemberSuccess = '[Member] Get member success';
 
     initData(members: Member[]): Action {
         return {
@@ -75,6 +77,24 @@ export class MemberAction {
             type: MemberAction.serviceFail,
             payload: {
                 errorMsg: error
+            }
+        };
+    }
+
+    getMember(id: number): Action {
+        return {
+            type: MemberAction.getMember,
+            payload: {
+                id
+            }
+        };
+    }
+
+    getMemberSuccess(member: Member) {
+        return {
+            type: MemberAction.getMemberSuccess,
+            payload: {
+                member: member
             }
         };
     }

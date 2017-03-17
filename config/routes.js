@@ -36,7 +36,9 @@ module.exports.routes = {
     view: 'homepage'
   },
   'GET /member/findchild': 'MemberController.findChild',
-  'POST /member/:id': 'MemberController.addChild'
+  'POST /member/:id': 'MemberController.addChild',
+
+  'POST /image/upload': 'ImageController.upload'
 
   /***************************************************************************
   *                                                                          *

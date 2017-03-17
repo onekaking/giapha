@@ -1,5 +1,7 @@
 module.exports = {
     upload: function(req, res) {
+        var fs = require('fs');
+
         req.file('avatar').upload({
             dirname: require('path').resolve(sails.config.appPath, 'assets/images'),
             // don't allow the total upload size to exceed ~10MB
@@ -15,8 +17,18 @@ module.exports = {
             }
 
             return res.json({
-                avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl())
+                avatar: base64_encode(uploadedFiles[0].fd),
+                url: require('path').basename(uploadedFiles[0].fd)
             })
         });
+
+
+        // function to encode file data to base64 encoded string
+        function base64_encode(file) {
+            // read binary data
+            var bitmap = fs.readFileSync(file);
+            // convert binary data to base64 encoded string
+            return new Buffer(bitmap).toString('base64');
+        }
     }
 }
