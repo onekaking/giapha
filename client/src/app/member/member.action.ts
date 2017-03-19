@@ -51,7 +51,7 @@ export class MemberAction {
                 errorMsg: errorMsg,
                 isLoading: false
             }
-        }
+        };
     }
 
     redirectToAddMember(): Action {

@@ -1,6 +1,9 @@
-html, body, app-root {
+html,
+body,
+app-root {
     height: 100%;
 }
+
 app-root {
     display: block;
 }
@@ -8,7 +11,7 @@ app-root {
 .left-side-panel {
     background-color: #293541;
     color: #6c737b;
-    width: 80px;
+    width: 170px;
     float: left;
     height: 100%;
 }
@@ -18,25 +21,80 @@ app-root {
     padding: 0;
 }
 
-.left-side-panel ul, .left-side-panel li {
+.left-side-panel ul,
+.left-side-panel li {
     margin: 0;
 }
 
-.left-side-panel li {
-    text-align: center;
+.left-side-panel li:nth-child(1) {
     padding: 14px;
-    cursor: pointer;
+    margin-bottom: 10px;
+    height: 61px;
 }
 
-.left-side-panel li:hover .fa, .left-side-panel li .fa.active {
+.left-side-panel li {
+    padding: 9px 14px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.left-side-panel li.small-tab {
+    text-align: center;
+}
+
+.left-side-panel li.small-tab .fa {
+    font-size: 22px;
+}
+
+.left-side-panel li.small-tab label {
+    display: none;
+}
+
+.left-side-panel li:hover *,
+.left-side-panel li.active * {
     color: #fff;
 }
 
 .left-side-panel li .fa {
-    font-size: 22px;
+    font-size: 16px;
+}
+
+.left-side-panel li label {
+    margin-left: 5px;
+    vertical-align: top;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.left-side-panel .brand {
+    background-color: #475b70;
+    color: #fff;
+    font-size: 20px;
 }
 
 .right-side-panel {
-    width: calc(100% - 80px);
+    width: calc(100% - 170px);
     float: left;
+    height: 100%;
+    background-color: #efefef;
+    padding: 0;
+}
+
+.right-side-panel .page-header {
+    margin: 0;
+    padding: 20px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    background-color: #fff;
+    height: 62px;
+}
+
+.right-side-panel .page-header h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.right-side-panel .content {
+    margin: 15px;
+    /*background-color: #fff;
+    padding: 20px;*/
 }

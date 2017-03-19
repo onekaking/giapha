@@ -22,7 +22,7 @@ export class UploadAvatarComponent implements OnInit {
 
     onChange(event) {
         const files = event.srcElement.files;
-        this.uploadService.makeFileRequest('http://localhost:1337/image/upload', [], files)
+        this.uploadService.makeFileRequest([], files)
             .subscribe((data) => {
                 const avatar = `data:image/gif;base64,${data.avatar}`;
                 this.image = avatar;

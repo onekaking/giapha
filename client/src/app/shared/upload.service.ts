@@ -13,6 +13,7 @@ export class UploadService {
     progress: any;
     progress$: any;
     progressObserver: any;
+    url: string = 'http://localhost:1337/image/upload';
 
     constructor() {
         this.progress$ = Observable.create(observer => {
@@ -20,7 +21,7 @@ export class UploadService {
         }).share();
     }
 
-    public makeFileRequest(url: string, params: string[], files: File[]): any {
+    public makeFileRequest(params: string[], files: File[]): any {
         return Observable.create(observer => {
             const formData: FormData = new FormData(),
                 xhr: XMLHttpRequest = new XMLHttpRequest();
@@ -46,7 +47,7 @@ export class UploadService {
                 this.progressObserver.next(this.progress);
             };
 
-            xhr.open('POST', url, true);
+            xhr.open('POST', this.url, true);
             xhr.send(formData);
         });
     }

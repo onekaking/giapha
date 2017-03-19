@@ -1,6 +1,13 @@
 <ul>
-    <li title="Add Member" (click)="addMember()"><i class="fa fa-plus-circle" [routerLink]="['/members/add']" 
-    [routerLinkActive]="['active']" aria-hidden="true"></i></li>
-    <li title="List Member" (click)="listMember()"><i class="fa fa-list" [routerLink]="['/members/list']" 
-    [routerLinkActive]="['active']" aria-hidden="true"></i></li>
+    <li class="brand">
+        <label># giapha</label>
+    </li>
+    <li title="Add Member" [routerLink]="['/members/add']" [routerLinkActive]="['active']" (click)="addMember()">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        <label>Add Member</label>
+    </li>
+    <li title="List Member" [routerLink]="['/members/list']" [routerLinkActive]="['active']" (click)="listMember()">
+        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+        <label>Members</label>
+    </li>
 </ul>
